@@ -21,8 +21,7 @@ public class UserController {
         UserModel user = this.userRepository.findByUsername(userModel.getUsername());
 
         if (user != null){
-            System.out.println("O usuário que você tentou cadastrar já existe!");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("O usuário que você tentou cadastrar já existe!");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The user you want to register already exists!");
         }
 
         var passwordHashed = BCrypt.withDefaults().hashToString(12, userModel.getPassword().toCharArray());
